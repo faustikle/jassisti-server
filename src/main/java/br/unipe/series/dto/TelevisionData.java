@@ -1,6 +1,6 @@
 package br.unipe.series.dto;
 
-public class DadosUsuarioFacebook {
+public class TelevisionData {
 
     private String id;
 
@@ -8,24 +8,30 @@ public class DadosUsuarioFacebook {
 
     private Picture picture;
 
-    private Television television;
-
-    public DadosUsuarioFacebook() {
+    public TelevisionData() {
     }
 
     public String getId() {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Picture getPicture() {
         return picture;
     }
 
-    public Television getTelevision() {
-        return television;
+    public void setPicture(Picture picture) {
+        this.picture = picture;
     }
 }

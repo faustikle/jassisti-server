@@ -33,7 +33,7 @@ public class FacebookService {
 
     public DadosUsuarioFacebook getDados(String accessToken) {
         Facebook facebook = new FacebookTemplate(accessToken);
-        String[] fields = {"id", "name", "picture"};
+        String[] fields = {"id", "name", "picture", "television{id,name,picture{url}}"};
 
         return facebook.fetchObject("me", DadosUsuarioFacebook.class, fields);
     }

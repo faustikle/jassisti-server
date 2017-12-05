@@ -13,14 +13,24 @@ public class Serie {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 10485760)
     private String descricao;
 
     @Column(nullable = false)
     private String foto;
 
-    @OneToMany
-    private List<Episodio> episodios;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Temporada> temporadas;
+
+    public Serie() {
+    }
+
+    public Serie(Long id, String nome, String descricao, String foto) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.foto = foto;
+    }
 
     public String getNome() {
         return nome;
@@ -34,7 +44,11 @@ public class Serie {
         return foto;
     }
 
-    public void addEpisodio(Episodio episodio) {
-        episodios.add(episodio);
+    public List<Temporada> getTemporadas() {
+        return temporadas;
+    }
+
+    public void addTemporada(Temporada temporada) {
+        temporadas.add(temporada);
     }
 }

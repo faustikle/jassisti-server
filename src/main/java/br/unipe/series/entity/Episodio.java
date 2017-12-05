@@ -12,19 +12,37 @@ public class Episodio {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String descricao;
 
     @Column(nullable = false)
     private String imagem;
 
-    @Column(nullable = false)
-    private String description;
+    @ManyToOne
+    private Temporada temporada;
 
-    public Episodio(String nome, String descricao, String imagem, String description) {
+    public Episodio() {
+    }
+
+    public Episodio(String nome, String descricao, String imagem) {
         this.nome = nome;
         this.descricao = descricao;
         this.imagem = imagem;
-        this.description = description;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public String getImagem() {
+        return imagem;
     }
 }

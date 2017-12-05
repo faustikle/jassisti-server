@@ -18,17 +18,13 @@ import java.util.List;
 public class UsuarioController {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private FacebookService facebookService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<Usuario> getUsuario(@RequestHeader("Authorization") String token){
-        List<Usuario> usuarios = usuarioRepository.findByAccessToken(token);
+    public ResponseEntity<DadosUsuarioFacebook> getUsuario(@RequestHeader("Authorization") String accessToken){
+        DadosUsuarioFacebook dadosUsuario = facebookService.getDados(accessToken);
 
-        if (usuarios.size() == 0) {
-            return new ResponseEntity<Usuario>(HttpStatus.UNAUTHORIZED);
-        }
-
-        return new ResponseEntity<Usuario>(usuarios.get(0), HttpStatus.OK);
+        return new ResponseEntity<DadosUsuarioFacebook>(dadosUsuario, HttpStatus.OK);
     }
 }
